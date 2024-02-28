@@ -1,8 +1,12 @@
 //
 //  FirebaseAppWrapper.swift
 //  Crypto_SwiftUI
-//
-//  Created by Vishal on 20/02/24.
-//
 
 import Foundation
+import Firebase
+
+final class FirebaseAppWrapper {
+    static func configure() {
+        FirebaseApp.configure()
+    }
+}

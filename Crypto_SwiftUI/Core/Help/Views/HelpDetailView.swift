@@ -1,20 +1,196 @@
+//import SwiftUI
+//import Firebase
 //
-//  HelpDetailView.swift
-//  Crypto_SwiftUI
+//struct HelpDetailView: View {
+//    @State private var isVStackVisible: Bool = true
+//    var helpRequest: HelpListModel
 //
-//  Created by Vishal on 23/02/24.
+//
+//    var body: some View {
+//        GeometryReader { geometry in
+//            ZStack(alignment: .bottom){
+//                Image(uiImage: UIImage(data: helpRequest.imageData ?? Data()) ?? UIImage(named: "markWithMan")!)
+//                    .resizable()
+//                    .aspectRatio(geometry.size ,contentMode: .fit)
+//                    .cornerRadius(10)
+//                    .onTapGesture {
+//                        withAnimation {
+//                            isVStackVisible.toggle()
+//                        }
+//                    }
+//
+//
+//                VStack(spacing: 30){
+//                    Text(helpRequest.title)
+//                        .font(.title)
+//                        .bold()
+//                        .foregroundColor(Color.theme.accent)
+//                        .padding(.top, 20)
+//
+//                    Text(helpRequest.description)
+//                        .font(.body)
+//                        .foregroundColor(Color.theme.accent)
+//                        .padding(.top, 10)
+//
+//                    HStack(spacing: 50){
+//                        Text(helpRequest.status)
+//                            .font(.subheadline)
+//                            .foregroundColor(Color.theme.accent)
+//
+//                        Spacer()
+//
+//                        if let formattedTimestamp = formattedTimestamp(helpRequest.timestamp) {
+//                            Text(formattedTimestamp)
+//                                .font(.caption)
+//                                .foregroundColor(Color.theme.accent)
+//                        }
+//                    }
+//                    .padding(.top, 20)
+//                }
+//                .padding(10)
+//                .cornerRadius(25, corners: [.topLeft, .topRight])
+//                .background(Color.theme.background)
+//                .offset(y: isVStackVisible ? 0 : helpRequest.imageData != nil ? UIScreen.main.bounds.height : 0)
+//                .animation(.easeInOut)
+//                .shadow(color: Color.theme.accent.opacity(0.25),
+//                        radius: 10,x: 0,y: 0)
+//            }
+//        }
+//        .navigationTitle("Request View")
+//    }
+//}
+//
+//
+//
+//extension HelpDetailView {
+//    func formattedTimestamp(_ timestamp: Timestamp?) -> String? {
+//        guard let timestamp = timestamp else { return nil }
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+//        return dateFormatter.string(from: timestamp.dateValue())
+//    }
+//}
+//
+//
 //
 
+//MARK: above all good below for zoom feature
 import SwiftUI
+import Firebase
 
 struct HelpDetailView: View {
+    
+    var helpRequest: HelpListModel
+    @State private var isVStackVisible: Bool = true
+    @State private var currentValue: CGFloat = 0
+    @State private var lastValue: CGFloat = 0
+    @State private var dragOffset: CGSize = .zero
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom){
+                Image(uiImage: UIImage(data: helpRequest.imageData ?? Data()) ?? UIImage(named: "markWithMan")!)
+                    .resizable()
+                    .aspectRatio(geometry.size ,contentMode: .fit)
+                    .cornerRadius(10)
+                    .scaleEffect(1 + currentValue + lastValue)
+                    .offset(dragOffset)
+                    .onTapGesture {
+                        withAnimation {
+                            isVStackVisible.toggle()
+                        }
+                    }
+                    .gesture(
+                        MagnificationGesture()
+                            .onChanged({ value in
+                                currentValue = value - 1
+                            })
+                            .onEnded({ value in
+                                lastValue += currentValue
+                                currentValue = 0
+                            })
+                    )
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                dragOffset = value.translation
+                            }
+                            .onEnded { _ in
+                                dragOffset = .zero
+                            }
+                    )
+                
+                VStack(spacing: 30){
+                    Text(helpRequest.title)
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color.theme.accent)
+                        .padding(.top, 20)
+                    
+                    Text(helpRequest.description)
+                        .font(.body)
+                        .foregroundColor(Color.theme.accent)
+                        .padding(.top, 10)
+                    
+                    HStack(spacing: 50){
+                        Text(helpRequest.status)
+                            .font(.subheadline)
+                            .foregroundColor(Color.theme.accent)
+                        
+                        Spacer()
+                        
+                        if let formattedTimestamp = formattedTimestamp(helpRequest.timestamp) {
+                            Text(formattedTimestamp)
+                                .font(.caption)
+                                .foregroundColor(Color.theme.accent)
+                        }
+                    }
+                    .padding(.top, 20)
+                }
+                .padding(10)
+                .cornerRadius(25, corners: [.topLeft, .topRight])
+                .background(Color.theme.background)
+                .offset(y: isVStackVisible ? 0 : helpRequest.imageData != nil ? UIScreen.main.bounds.height : 0)
+                .animation(.easeInOut)
+                .shadow(color: Color.theme.accent.opacity(0.25),
+                        radius: 10,x: 0,y: 0)
+            }
+        }
+        .navigationTitle("Request View")
     }
 }
 
-struct HelpDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        HelpDetailView()
+extension HelpDetailView {
+    func formattedTimestamp(_ timestamp: Timestamp?) -> String? {
+        guard let timestamp = timestamp else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
+        return dateFormatter.string(from: timestamp.dateValue())
+    }
+    
+    private func statusButton(statusText: String) -> some View {
+        let dotSize: CGFloat = 15
+        let color: Color
+        
+        switch statusText.lowercased() {
+        case "pending":
+            color = .yellow
+        case "received":
+            color = .blue
+        case "inprogress":
+            color = .purple
+        case "resolved":
+            color = .green
+        case "closed":
+            color = .gray
+        default:
+            color = .black
+        }
+        
+        return Circle()
+            .frame(width: dotSize, height: dotSize)
+            .foregroundColor(color)
     }
 }

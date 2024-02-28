@@ -1,10 +1,5 @@
 //
 //  Date.swift
-//  SwiftfulCrypto
-//
-//  Created by Nick Sarno on 5/13/21.
-//
-
 import Foundation
 
 extension Date {
@@ -26,5 +21,4 @@ extension Date {
     func asShortDateString() -> String {
         return shortFormatter.string(from: self)
     }
-    
 }

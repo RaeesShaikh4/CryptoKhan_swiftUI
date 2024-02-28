@@ -8,8 +8,7 @@
 import Foundation
 
 extension String {
-    
-    
+  // To remove unnecessary html links from description 
     var removingHTMLOccurances: String {
         return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }

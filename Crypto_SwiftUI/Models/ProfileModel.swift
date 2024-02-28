@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ProfileModel {
+    var username: String
+    var bio: String
+    var profileImage: String?
+}

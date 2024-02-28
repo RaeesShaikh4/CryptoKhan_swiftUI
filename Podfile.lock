@@ -1,0 +1,25 @@
+PODS:
+  - Alamofire (5.8.1)
+  - AlamofireImage (4.3.0):
+    - Alamofire (~> 5.8)
+  - SSNeumorphicView (0.1.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
+  - SSNeumorphicView
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - SSNeumorphicView
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  AlamofireImage: 843953fa97bee5f561cf05d83abd759e590b068d
+  SSNeumorphicView: d853ecbeeef231834d8f298eed38c1ceb0a08745
+
+PODFILE CHECKSUM: e36c3665180b3da396b3479c7e3835274a37d0ab
+
+COCOAPODS: 1.12.1

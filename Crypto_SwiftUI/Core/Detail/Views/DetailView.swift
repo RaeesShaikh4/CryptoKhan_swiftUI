@@ -1,15 +1,9 @@
-//
-//  DetailView.swift
-//  Crypto_SwiftUI
-//
-//  Created by Vishal on 08/02/24.
-//
-
 import SwiftUI
 
 struct DetaiLoadingView: View {
     
     @Binding var coin: CoinModel?
+
     
     var body: some View {
         ZStack {
@@ -44,15 +38,13 @@ struct DetailView: View {
                 
                 VStack(spacing: 20) {
                     overviewTitle
-                    Divider()
                     coinDescriptionSection
-                    
                     overviewGrid
                     
+//                    Spacer()
+                    
                     additionalTitle
-                    Divider()
                     additionalGrid
-            
                     linkSection
                 }
                 .padding()
@@ -151,7 +143,19 @@ extension DetailView {
                 StatisticView(stat: stat)
             }
         }
+        .padding()
+      
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color.theme.background)                
+//                .shadow(color: Color("lightShadow"), radius: 8, x: -8, y: -8)
+//                .shadow(color: Color("darkShadow"), radius: 8, x: 8, y: 8)
+                .shadow(color: Color.theme.accent.opacity(0.25),
+                    radius: 8,x: 0,y: 0)
+        )
+
     }
+
     
     private var additionalGrid: some View {
         LazyVGrid(columns: columns,
@@ -161,6 +165,15 @@ extension DetailView {
             ForEach(vm.additionalStatistics) { stat in
                 StatisticView(stat: stat)
             }
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color.theme.background) 
+//                .shadow(color: Color("lightShadow"), radius: 8, x: -8, y: -8)
+//                .shadow(color: Color("darkShadow"), radius: 8, x: 8, y: 8)
+                .shadow(color: Color.theme.accent.opacity(0.25),
+                    radius: 8,x: 0,y: 0)
         }
     }
     

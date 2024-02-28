@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct XMarkButton: View {
+    
+    @Binding var isPresented: Bool
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            isPresented = false
+        } label: {
+            Image(systemName: "xmark")
+                .font(.headline)
+        }
     }
 }
 
+
 struct XMarkButton_Previews: PreviewProvider {
     static var previews: some View {
-        XMarkButton()
+        let isPresented = Binding.constant(false)
+        return XMarkButton(isPresented: isPresented)
     }
 }

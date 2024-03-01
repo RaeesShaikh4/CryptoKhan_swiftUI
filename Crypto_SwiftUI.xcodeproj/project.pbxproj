@@ -10,7 +10,7 @@
 		C3B735AF88BCAD61D5CA7CBD /* Pods_Crypto_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF370CD14F0FEFEB6254C5FF /* Pods_Crypto_SwiftUI.framework */; };
 		C90188FF2B88846100E05BC6 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90188FE2B88846000E05BC6 /* RoundedCorners.swift */; };
 		C901A0012B85D849007F3E0C /* HelpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901A0002B85D849007F3E0C /* HelpListView.swift */; };
-		C901A0042B85D8D5007F3E0C /* helpListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901A0032B85D8D5007F3E0C /* helpListModel.swift */; };
+		C901A0042B85D8D5007F3E0C /* HelpListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901A0032B85D8D5007F3E0C /* HelpListModel.swift */; };
 		C901A0062B85DC3B007F3E0C /* HelpListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901A0052B85DC3B007F3E0C /* HelpListViewModel.swift */; };
 		C901A0082B85E114007F3E0C /* HelpListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901A0072B85E114007F3E0C /* HelpListCardView.swift */; };
 		C90738462B73A11B00B748FA /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90738452B73A11A00B748FA /* CoinImageViewModel.swift */; };
@@ -25,6 +25,7 @@
 		C91014CA2B77A68800584033 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91014C92B77A68800584033 /* SettingView.swift */; };
 		C9123B482B74E8AF009D91EF /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9123B472B74E8AF009D91EF /* XMarkButton.swift */; };
 		C9123B4A2B74F3FE009D91EF /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9123B492B74F3FE009D91EF /* CoinLogoView.swift */; };
+		C9325F722B8F604200943E5A /* AlertWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9325F712B8F604200943E5A /* AlertWithButton.swift */; };
 		C93312952B723DDA0042CC75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C93312942B723DD90042CC75 /* Assets.xcassets */; };
 		C93312982B7245590042CC75 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93312972B7245580042CC75 /* Color.swift */; };
 		C933129E2B7248A90042CC75 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933129D2B7248A90042CC75 /* HomeView.swift */; };
@@ -78,7 +79,7 @@
 		91E149FD5A2ED4C4BAE2DEB4 /* Pods-Crypto_SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto_SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-Crypto_SwiftUI/Pods-Crypto_SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		C90188FE2B88846000E05BC6 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		C901A0002B85D849007F3E0C /* HelpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpListView.swift; sourceTree = "<group>"; };
-		C901A0032B85D8D5007F3E0C /* helpListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpListModel.swift; sourceTree = "<group>"; };
+		C901A0032B85D8D5007F3E0C /* HelpListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpListModel.swift; sourceTree = "<group>"; };
 		C901A0052B85DC3B007F3E0C /* HelpListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpListViewModel.swift; sourceTree = "<group>"; };
 		C901A0072B85E114007F3E0C /* HelpListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpListCardView.swift; sourceTree = "<group>"; };
 		C90738452B73A11A00B748FA /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		C91014C92B77A68800584033 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C9123B472B74E8AF009D91EF /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
 		C9123B492B74F3FE009D91EF /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
+		C9325F712B8F604200943E5A /* AlertWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithButton.swift; sourceTree = "<group>"; };
 		C93312942B723DD90042CC75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		C93312972B7245580042CC75 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C933129D2B7248A90042CC75 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				C9858B9C2B7B3500006581BD /* CustomAlert.swift */,
 				C9A53EE92B8DB02F0004CE66 /* StatusButton.swift */,
 				C94619642B8DC8EA00101952 /* DropdownMenu.swift */,
+				C9325F712B8F604200943E5A /* AlertWithButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -410,7 +413,7 @@
 				C9C2B0AD2B79E5EC0059BED8 /* PortfolioContainer.xcdatamodeld */,
 				C90F26CF2B7A3DAF00879164 /* ProfileModel.swift */,
 				C945BFE22B7B53B400A0615C /* ProfileContainer.xcdatamodeld */,
-				C901A0032B85D8D5007F3E0C /* helpListModel.swift */,
+				C901A0032B85D8D5007F3E0C /* HelpListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -592,9 +595,10 @@
 				C973E6EC2B73692300882CEF /* HomeViewModel.swift in Sources */,
 				C9858B9D2B7B3500006581BD /* CustomAlert.swift in Sources */,
 				C901A0082B85E114007F3E0C /* HelpListCardView.swift in Sources */,
+				C9325F722B8F604200943E5A /* AlertWithButton.swift in Sources */,
 				C9E8AD982B738C73000EC743 /* NetworkManager.swift in Sources */,
 				C9837CAC2B78BB1000EB0A6F /* LaunchView.swift in Sources */,
-				C901A0042B85D8D5007F3E0C /* helpListModel.swift in Sources */,
+				C901A0042B85D8D5007F3E0C /* HelpListModel.swift in Sources */,
 				C93DF8BC2B7237260047532F /* ContentView.swift in Sources */,
 				C9E8AD9B2B739496000EC743 /* CoinImageView.swift in Sources */,
 				C933B1542B7901F5004B3391 /* UIApplication.swift in Sources */,

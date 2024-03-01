@@ -1,4 +1,5 @@
 
+//MARK: below for zstack approach
 import SwiftUI
 
 struct HelpListView: View {
@@ -8,43 +9,51 @@ struct HelpListView: View {
     @State private var selectedStatus: String = "All Status"
     @State private var isDropdownOpen: Bool = false
     @State private var isCardTapped: Bool = false
-    
+    // for alert
+    @State private var isAlertPresented: Bool = false
+    @State private var selectedAlertHelpRequestID: String?
+    @State private var alertType: AlertWithButton.AlertType = .failure
     
     var body: some View {
-        VStack {
-            
-            helpDropDown
-                .pickerStyle(MenuPickerStyle())
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .frame(height: 70)
-                .clipped()
-                .padding(.horizontal)
-                .background(Color.clear)
-                .onTapGesture {
-                    isDropdownOpen.toggle()
+        ZStack {
+            VStack {
+                helpDropDown
+                    .pickerStyle(MenuPickerStyle())
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .frame(height: 70)
+                    .clipped()
+                    .padding(.horizontal)
+                    .background(Color.clear)
+                    .onTapGesture {
+                        isDropdownOpen.toggle()
+                    }
+                
+                let filteredHelpList = viewModel.helpList.filter {
+                    selectedStatus.lowercased() == "all status" || $0.status.lowercased() == selectedStatus.lowercased()
                 }
-            
-            let filteredHelpList = viewModel.helpList.filter {
-                selectedStatus.lowercased() == "all status" || $0.status.lowercased() == selectedStatus.lowercased()
-            }
-            
-            if filteredHelpList.isEmpty {
-                VStack {
-                    Spacer()
-                    Image(uiImage: UIImage(named: "data-not-found")!)
-                        .resizable()
-                        .frame(width: 300, height: 300)
-                        .clipShape(Circle())
-                        .padding()
-                    Text("Data not found...?")
-                        .foregroundColor(Color.theme.accent)
-                       
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                List(filteredHelpList) { helpRequest in
-                    HelpListCardView(helpRequest: helpRequest, viewModel: viewModel)
+                
+                if filteredHelpList.isEmpty {
+                    VStack {
+                        Spacer()
+                        Image(uiImage: UIImage(named: "data-not-found")!)
+                            .resizable()
+                            .frame(width: 300, height: 300)
+                            .clipShape(Circle())
+                            .padding()
+                        Text("Data not found...?")
+                            .foregroundColor(Color.theme.accent)
+                            .font(.system(size: 24, weight: .bold))
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List(filteredHelpList) { helpRequest in
+                        HelpListCardView(helpRequest: helpRequest, viewModel: viewModel, isAlertPresented: $isAlertPresented, onDelete: {
+                            selectedAlertHelpRequestID = helpRequest.id
+                            isAlertPresented = true
+                        }
+                        )
                         .padding(.vertical, 8)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
@@ -63,28 +72,35 @@ struct HelpListView: View {
                                 EmptyView().hidden()
                             }
                         )
-                }
-                .background(
-                    Color.black.opacity(isDropdownOpen ? 0.3 : 0)
-                        .edgesIgnoringSafeArea(.all)
-                        .onTapGesture {
-                            isDropdownOpen = false
-                        }
-                )
-                .listStyle(.plain)
-                .navigationTitle("Help Requests")
-                .navigationBarItems(trailing:
-                                        NavigationLink(destination: HelpView()) {
-                    Image(systemName: "square.and.pencil")
-                        .foregroundColor(Color.theme.accent)
-                }
-                )
-                .onChange(of: isCardTapped) { newValue in
-                    isCardTapped = false
+                    }
+                    .background(
+                        Color.black.opacity(isDropdownOpen ? 0.3 : 0)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                isDropdownOpen = false
+                            }
+                    )
+                    .listStyle(.plain)
+                    .onChange(of: isCardTapped) { newValue in
+                        isCardTapped = false
+                    }
+                    
                 }
             }
+            .background(Color.clear)
             
+            if isAlertPresented && selectedAlertHelpRequestID != nil {
+                alertSection
+                    .background(Color.clear)
+            }
         }
+        .navigationTitle("Help Requests")
+        .navigationBarItems(trailing:
+                                NavigationLink(destination: HelpView()) {
+            Image(systemName: "square.and.pencil")
+                .foregroundColor(Color.theme.accent)
+        }
+        )
     }
     
     func statusButton(statusText: String) -> some View {
@@ -128,7 +144,6 @@ extension HelpListView {
                         .frame(width: 20, height: 20)
                     Text(status)
                         .tag(status)
-                        .foregroundColor(Color.theme.accent)
                 }
                 .background(Color.theme.background)
                 .cornerRadius(10)
@@ -136,6 +151,26 @@ extension HelpListView {
                         radius: 10,x: 0,y: 0)
             }
         }
+        .accentColor(Color.theme.accent)
+    }
+    
+    private var alertSection: some View {
+        AlertWithButton(type: alertType, message: "Are you sure you want to delete?", deleteAction: {
+            if let selectedAlertHelpRequestID = selectedAlertHelpRequestID {
+                if viewModel.helpList.count > 0 {
+                    for i in 0 ... viewModel.helpList.count - 1 {
+                        if viewModel.helpList[i].id == selectedAlertHelpRequestID {
+                            viewModel.removeDocument(helpRequest: self.viewModel.helpList[i],ID: self.viewModel.helpListID[i])
+                        }
+                    }
+                }
+            }
+            isAlertPresented = false
+        }, closeAction: {
+            print("closeAction clicked on alert---")
+            isAlertPresented = false
+        })
+        .background(Color.clear)
     }
     
 }

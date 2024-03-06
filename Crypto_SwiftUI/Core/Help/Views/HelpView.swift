@@ -1,4 +1,4 @@
-//MARK: for image upload section lgic above all good
+
 import SwiftUI
 
 struct HelpView: View , ImagePickerDelegate{

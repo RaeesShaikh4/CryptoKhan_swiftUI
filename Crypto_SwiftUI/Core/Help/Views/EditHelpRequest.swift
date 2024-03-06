@@ -1,5 +1,4 @@
 
-//MARK: above all good below for update logic
 import SwiftUI
 struct EditHelpRequest: View {
     @State private var request: String = ""

@@ -1,81 +1,3 @@
-//import SwiftUI
-//import Firebase
-//
-//struct HelpDetailView: View {
-//    @State private var isVStackVisible: Bool = true
-//    var helpRequest: HelpListModel
-//
-//
-//    var body: some View {
-//        GeometryReader { geometry in
-//            ZStack(alignment: .bottom){
-//                Image(uiImage: UIImage(data: helpRequest.imageData ?? Data()) ?? UIImage(named: "markWithMan")!)
-//                    .resizable()
-//                    .aspectRatio(geometry.size ,contentMode: .fit)
-//                    .cornerRadius(10)
-//                    .onTapGesture {
-//                        withAnimation {
-//                            isVStackVisible.toggle()
-//                        }
-//                    }
-//
-//
-//                VStack(spacing: 30){
-//                    Text(helpRequest.title)
-//                        .font(.title)
-//                        .bold()
-//                        .foregroundColor(Color.theme.accent)
-//                        .padding(.top, 20)
-//
-//                    Text(helpRequest.description)
-//                        .font(.body)
-//                        .foregroundColor(Color.theme.accent)
-//                        .padding(.top, 10)
-//
-//                    HStack(spacing: 50){
-//                        Text(helpRequest.status)
-//                            .font(.subheadline)
-//                            .foregroundColor(Color.theme.accent)
-//
-//                        Spacer()
-//
-//                        if let formattedTimestamp = formattedTimestamp(helpRequest.timestamp) {
-//                            Text(formattedTimestamp)
-//                                .font(.caption)
-//                                .foregroundColor(Color.theme.accent)
-//                        }
-//                    }
-//                    .padding(.top, 20)
-//                }
-//                .padding(10)
-//                .cornerRadius(25, corners: [.topLeft, .topRight])
-//                .background(Color.theme.background)
-//                .offset(y: isVStackVisible ? 0 : helpRequest.imageData != nil ? UIScreen.main.bounds.height : 0)
-//                .animation(.easeInOut)
-//                .shadow(color: Color.theme.accent.opacity(0.25),
-//                        radius: 10,x: 0,y: 0)
-//            }
-//        }
-//        .navigationTitle("Request View")
-//    }
-//}
-//
-//
-//
-//extension HelpDetailView {
-//    func formattedTimestamp(_ timestamp: Timestamp?) -> String? {
-//        guard let timestamp = timestamp else { return nil }
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm a"
-//        return dateFormatter.string(from: timestamp.dateValue())
-//    }
-//}
-//
-//
-//
-
-//MARK: above all good below for zoom feature
 import SwiftUI
 import Firebase
 
@@ -122,11 +44,11 @@ struct HelpDetailView: View {
                     )
                 
                 VStack(spacing: 30){
+            
                     Text(helpRequest.title)
                         .font(.title)
                         .bold()
                         .foregroundColor(Color.theme.accent)
-                        .padding(.top, 20)
                     
                     Text(helpRequest.description)
                         .font(.body)
@@ -142,24 +64,25 @@ struct HelpDetailView: View {
                         
                         if let formattedTimestamp = formattedTimestamp(helpRequest.timestamp) {
                             Text(formattedTimestamp)
-                                .font(.caption)
+                                .font(.subheadline)
                                 .foregroundColor(Color.theme.accent)
                         }
                     }
                     .padding(.top, 20)
                 }
-                .padding(10)
-                .cornerRadius(25, corners: [.topLeft, .topRight])
+                .padding(20)
                 .background(Color.theme.background)
                 .offset(y: isVStackVisible ? 0 : helpRequest.imageData != nil ? UIScreen.main.bounds.height : 0)
                 .animation(.easeInOut)
                 .shadow(color: Color.theme.accent.opacity(0.25),
                         radius: 10,x: 0,y: 0)
+                
             }
+            
         }
-        .navigationTitle("Request View")
     }
 }
+
 
 extension HelpDetailView {
     func formattedTimestamp(_ timestamp: Timestamp?) -> String? {
@@ -194,3 +117,4 @@ extension HelpDetailView {
             .foregroundColor(color)
     }
 }
+

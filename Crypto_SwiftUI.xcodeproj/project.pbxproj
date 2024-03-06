@@ -25,6 +25,8 @@
 		C91014CA2B77A68800584033 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91014C92B77A68800584033 /* SettingView.swift */; };
 		C9123B482B74E8AF009D91EF /* XMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9123B472B74E8AF009D91EF /* XMarkButton.swift */; };
 		C9123B4A2B74F3FE009D91EF /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9123B492B74F3FE009D91EF /* CoinLogoView.swift */; };
+		C91267952B93376F00912B2B /* EditHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91267942B93376F00912B2B /* EditHelpRequestViewModel.swift */; };
+		C927AD7D2B91D741002E7E5C /* EditHelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C927AD7C2B91D741002E7E5C /* EditHelpRequest.swift */; };
 		C9325F722B8F604200943E5A /* AlertWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9325F712B8F604200943E5A /* AlertWithButton.swift */; };
 		C93312952B723DDA0042CC75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C93312942B723DD90042CC75 /* Assets.xcassets */; };
 		C93312982B7245590042CC75 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93312972B7245580042CC75 /* Color.swift */; };
@@ -94,6 +96,8 @@
 		C91014C92B77A68800584033 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C9123B472B74E8AF009D91EF /* XMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButton.swift; sourceTree = "<group>"; };
 		C9123B492B74F3FE009D91EF /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
+		C91267942B93376F00912B2B /* EditHelpRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHelpRequestViewModel.swift; sourceTree = "<group>"; };
+		C927AD7C2B91D741002E7E5C /* EditHelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHelpRequest.swift; sourceTree = "<group>"; };
 		C9325F712B8F604200943E5A /* AlertWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithButton.swift; sourceTree = "<group>"; };
 		C93312942B723DD90042CC75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		C93312972B7245580042CC75 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				C901A0002B85D849007F3E0C /* HelpListView.swift */,
 				C901A0072B85E114007F3E0C /* HelpListCardView.swift */,
 				C9E1BCD32B886A2400D72D5E /* HelpDetailView.swift */,
+				C927AD7C2B91D741002E7E5C /* EditHelpRequest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 			children = (
 				C9C3B3F62B84BFC80080C44D /* HelpViewModel.swift */,
 				C901A0052B85DC3B007F3E0C /* HelpListViewModel.swift */,
+				C91267942B93376F00912B2B /* EditHelpRequestViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				C9E8AD982B738C73000EC743 /* NetworkManager.swift in Sources */,
 				C9837CAC2B78BB1000EB0A6F /* LaunchView.swift in Sources */,
 				C901A0042B85D8D5007F3E0C /* HelpListModel.swift in Sources */,
+				C927AD7D2B91D741002E7E5C /* EditHelpRequest.swift in Sources */,
 				C93DF8BC2B7237260047532F /* ContentView.swift in Sources */,
 				C9E8AD9B2B739496000EC743 /* CoinImageView.swift in Sources */,
 				C933B1542B7901F5004B3391 /* UIApplication.swift in Sources */,
@@ -627,6 +634,7 @@
 				C934FDED2B74E2F200AE2416 /* PortfolioView.swift in Sources */,
 				C901A0012B85D849007F3E0C /* HelpListView.swift in Sources */,
 				C96223572B734EBE0067F654 /* Double.swift in Sources */,
+				C91267952B93376F00912B2B /* EditHelpRequestViewModel.swift in Sources */,
 				C947B2F72B76972400B4E51F /* ChartView.swift in Sources */,
 				C934FDEB2B74D85A00AE2416 /* MarketDataService.swift in Sources */,
 				C950674A2B75F1480076CEFE /* DetailViewModel.swift in Sources */,

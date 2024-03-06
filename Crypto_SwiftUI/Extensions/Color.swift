@@ -20,6 +20,7 @@ struct ColorTheme {
     let red = Color("RedColor")
     let secondaryText = Color("SecondaryTextColor")
     let AccentColorButtons = Color("AccentColorButtons")
+    let textfieldFG = Color("textfield-FG")
 }
 
 struct LaunchTheme {
